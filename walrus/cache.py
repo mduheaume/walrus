@@ -125,7 +125,7 @@ class Cache(object):
         """
         def decorator(fn):
             def make_key(args, kwargs):
-                return '%s:%s' % (fn.__name__, key_fn(args, kwargs))
+                return u'%s:%s' % (fn.__name__, key_fn(args, kwargs))
 
             def bust(*args, **kwargs):
                 return self.delete(make_key(args, kwargs))
