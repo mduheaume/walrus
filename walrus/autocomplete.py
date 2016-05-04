@@ -302,11 +302,11 @@ class Autocomplete(object):
     def get_cache_key(self, phrases, boosts):
         if boosts:
             boost_key = '|'.join(sorted(
-                '%s:%s' % (k, v) for k, v in boosts.items()))
+                u'%s:%s' % (k, v) for k, v in boosts.items()))
         else:
             boost_key = ''
         phrase_key = '|'.join(phrases)
-        return '%s:c:%s:%s' % (self.namespace, phrase_key, boost_key)
+        return u'%s:c:%s:%s' % (self.namespace, phrase_key, boost_key)
 
     def flush(self, batch_size=1000):
         """
