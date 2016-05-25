@@ -1540,6 +1540,14 @@ class TestAutocomplete(WalrusTestCase):
         results = self.autocomplete.search('foo')
         self.assertSearch(results, ['foo one', 'bar foo one'])
 
+    def test_unicode(self):
+        phrase = u'Acur\xc3'
+        self.autocomplete.store(phrase)
+        self.autocomplete.boost_object(phrase)
+        results = self.autocomplete.search('acu')
+        #import pdb; pdb.set_trace()
+        self.assertSearch(results, [phrase])
+
 
 class TestRateLimit(WalrusTestCase):
     def setUp(self):
